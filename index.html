@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="finance-tracker">
+        <div class="container">
+            <div class="header">
+                <h1>💰 Finance Tracker</h1>
+                <p>Take control of your personal finances with smart tracking</p>
+            </div>
+
+            <div class="dashboard">
+                <div class="stats-card">
+                    <h3>Total Balance</h3>
+                    <div class="stats-value" id="totalBalance">$0.00</div>
+                    <div class="stats-change" id="balanceChange">Start by adding transactions</div>
+                </div>
+                <div class="stats-card">
+                    <h3>This Month</h3>
+                    <div class="stats-value" id="monthlyNet">$0.00</div>
+                    <div class="stats-change" id="monthlyChange">Income - Expenses</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-section">
+                    <h3>💸 Add Transaction</h3>
+                    <form id="transactionForm">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" id="description" placeholder="e.g., Grocery shopping" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Amount ($)</label>
+                                <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Type</label>
+                                <select id="type" required>
+                                    <option value="expense">Expense</option>
+                                    <option value="income">Income</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="category" required>
+                                <option value="food">🍔 Food & Dining</option>
+                                <option value="transport">🚗 Transportation</option>
+                                <option value="entertainment">🎬 Entertainment</option>
+                                <option value="utilities">⚡ Utilities</option>
+                                <option value="salary">💼 Salary</option>
+                                <option value="freelance">💻 Freelance</option>
+                                <option value="other">📦 Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Add Transaction</button>
+                    </form>
+                </div>
+
+                <div class="control-section">
+                    <h3>📊 Quick Stats</h3>
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-weight: 600; color: #374151; margin-bottom: 8px; display: block;">Monthly Income Goal</label>
+                        <input type="number" id="incomeGoal" placeholder="Enter your target income" value="5000">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="incomeProgress" style="width: 0%;"></div>
+                        </div>
+                        <small id="goalStatus" style="color: #64748b; font-size: 0.9rem;">Set your monthly income goal</small>
+                    </div>
+                    <div class="chart-container">
+                        <strong style="color: #1e293b;">Quick Overview</strong>
+                        <div style="margin-top: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span style="color: #059669;">📈 Total Income:</span>
+                                <strong id="totalIncome" style="color: #059669;">$0.00</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                <span style="color: #dc2626;">📉 Total Expenses:</span>
+                                <strong id="totalExpenses" style="color: #dc2626;">$0.00</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-top: 12px; border-top: 2px solid #e2e8f0;">
+                                <span style="color: #1e293b;">💰 Net Worth:</span>
+                                <strong id="netWorth" style="color: #1e293b;">$0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactions">
+                <h3>
+                    📝 Recent Transactions
+                    <button class="btn" onclick="clearAllTransactions()" style="width: auto; padding: 8px 16px; font-size: 0.9rem; background: #ef4444;">Clear All</button>
+                </h3>
+                <div id="transactionsList">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🏦</div>
+                        <h4 style="color: #f1f5f9; margin-bottom: 8px;">No transactions yet</h4>
+                        <p>Add your first transaction to start tracking your finances!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
